@@ -1,8 +1,10 @@
 "use strict";
 
 var Handlebars = require("hbsfy/runtime");
-var entryTemplate = require('../templates/article/article.hbs');
-var entryData = require('../templates/article/article-data.js');
+var entryTemplate = require("../templates/article/article.hbs");
+var entryData = require("../templates/article/article-data.js");
+var solarSystemData = require("../templates/article/solarSystem-data.js");
+var solarSystemTemplate = require("../templates/article/solarSystem.hbs");
 
 // Register a partial
 Handlebars.registerPartial("tagLine", require('../templates/partials/tagline.hbs'));
@@ -16,42 +18,9 @@ Handlebars.registerHelper("inc", function(value) {
 // attach our rendered HTML to the DOM
 $("#entryOutput").append(entryTemplate(entryData));
 
-var solarSystemData = {
-  planets: [
-    {
-      type: "rocky",
-      name: "Mercury"
-    },
-    {
-      type: "rocky",
-      name: "Venus"
-    },
-    {
-      type: "rocky",
-      name: "Earth"
-    },
-    {
-      type: "rocky",
-      name: "Mars"
-    },
-    {
-      type: "gas giant",
-      name: "Jupiter"
-    },
-    {
-      type: "gas giant",
-      name: "Saturn"
-    },
-    {
-      type: "ice giant",
-      name: "Uranus"
-    },
-    {
-      type: "ice giant",
-      name: "Neptune"
-    }
-  ]
-};
+$("#solarSystemBtn").click(function () {
+  $("#solarSystemEntry").append(solarSystemTemplate(solarSystemData));
+});
 
 
 
